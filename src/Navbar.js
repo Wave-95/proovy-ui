@@ -7,6 +7,7 @@ export default function Navbar({ accountDetails, setAccountDetails }) {
     if (starknet) {
       await starknet.enable();
     }
+    console.log(starknet)
     if (starknet?.account?.address) {
       setAccountDetails({ address: starknet.account.address });
     }
