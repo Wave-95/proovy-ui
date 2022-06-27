@@ -156,11 +156,11 @@ export default function Dashboard({ account, provider }) {
           <Typography align="left" variant="body">{`Latest Deployment: ${
             txReceipt?.transaction_hash ? ellipse(txReceipt?.transaction_hash) : 'None'
           }`}</Typography>
-          <Typography>{`Transaction Status: ${txReceipt?.status}`}</Typography>
+          <Typography>{`Transaction Status: ${txReceipt?.status || 'N/A'}`}</Typography>
           <Typography>{`NFT Contract Address: ${
-            txReceipt?.transaction_hash ? getNftContractAddress(txReceipt) : 'Waiting on deployment (Refresh)'
+            getNftContractAddress(txReceipt) || 'Waiting on deployment (Refresh)'
           } `}</Typography>
-          {txReceipt?.transaction_hash && renderVoyagerLink(txReceipt)}
+          {getNftContractAddress(txReceipt) ? renderVoyagerLink(txReceipt) : null}
         </Box>
       </Grid>
       <Grid item xs={8}></Grid>
